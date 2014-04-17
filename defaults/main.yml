@@ -1,0 +1,7 @@
+---
+# The port sshd is running on.
+opensshd_port: 22
+
+# Specifies whether root can log in using ssh.
+# Allowed values: yes, without-password, forced-commands-only, no.
+opensshd_permit_root_login: 'yes'
