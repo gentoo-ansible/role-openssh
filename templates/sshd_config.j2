@@ -55,8 +55,11 @@ PermitRootLogin {{ opensshd_permit_root_login }}
 
 #AuthorizedPrincipalsFile none
 
-#AuthorizedKeysCommand none
-#AuthorizedKeysCommandUser nobody
+# Path of the script to be used to look up the user's public keys.
+AuthorizedKeysCommand {{ opensshd_authz_keys_cmd }}
+
+# The user under whose account the AuthorizedKeysCommand is run.
+AuthorizedKeysCommandUser {{ opensshd_authz_keys_cmd_user }}
 
 # For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
 #RhostsRSAAuthentication no
@@ -122,22 +125,6 @@ UsePrivilegeSeparation sandbox		# Default for new installations.
 
 # no default banner path
 #Banner none
-
-# here are the new patched ldap related tokens
-# entries in your LDAP must have posixAccount & ldapPublicKey objectclass
-#UseLPK yes
-#LpkLdapConf /etc/ldap.conf
-#LpkServers  ldap://10.1.7.1/ ldap://10.1.7.2/
-#LpkUserDN   ou=users,dc=phear,dc=org
-#LpkGroupDN  ou=groups,dc=phear,dc=org
-#LpkBindDN cn=Manager,dc=phear,dc=org
-#LpkBindPw secret
-#LpkServerGroup mail
-#LpkFilter (hostAccess=master.phear.org)
-#LpkForceTLS no
-#LpkSearchTimelimit 3
-#LpkBindTimelimit 3
-#LpkPubKeyAttr sshPublicKey
 
 # override default of no subsystems
 Subsystem	sftp	/usr/lib64/misc/sftp-server

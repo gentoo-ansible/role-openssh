@@ -1,7 +1,17 @@
 ---
+# Port
 # The port sshd is running on.
 opensshd_port: 22
 
+# PermitRootLogin
 # Specifies whether root can log in using ssh.
 # Allowed values: yes, without-password, forced-commands-only, no.
 opensshd_permit_root_login: 'yes'
+
+# AuthorizedKeysCommand
+# Path of the script to be used to look up the user's public keys.
+opensshd_authz_keys_cmd: none
+
+# AuthorizedKeysCommandUser
+# The user under whose account the AuthorizedKeysCommand is run.
+opensshd_authz_keys_cmd_user: nobody
