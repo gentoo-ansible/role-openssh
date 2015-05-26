@@ -41,7 +41,7 @@ Port {{ opensshd_port }}
 # Authentication:
 
 #LoginGraceTime 2m
-PermitRootLogin {{ opensshd_permit_root_login }}
+PermitRootLogin {{ 'yes' if opensshd_permit_root_login | bool else 'no' }}
 #StrictModes yes
 #MaxAuthTries 6
 #MaxSessions 10
