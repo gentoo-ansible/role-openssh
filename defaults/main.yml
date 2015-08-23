@@ -10,7 +10,7 @@ opensshd_permit_root_login: yes
 
 # AuthorizedKeysCommand
 # Path of the script to be used to look up the user's public keys.
-opensshd_authz_keys_cmd: none
+opensshd_authz_keys_cmd:
 
 # AuthorizedKeysCommandUser
 # The user under whose account the AuthorizedKeysCommand is run.

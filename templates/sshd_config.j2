@@ -56,7 +56,7 @@ PermitRootLogin {{ 'yes' if opensshd_permit_root_login | bool else 'no' }}
 #AuthorizedPrincipalsFile none
 
 # Path of the script to be used to look up the user's public keys.
-AuthorizedKeysCommand {{ opensshd_authz_keys_cmd }}
+{{ '' if opensshd_authz_keys_cmd else '#' }}AuthorizedKeysCommand {{ opensshd_authz_keys_cmd }}
 
 # The user under whose account the AuthorizedKeysCommand is run.
 AuthorizedKeysCommandUser {{ opensshd_authz_keys_cmd_user }}
